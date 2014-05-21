@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python -B
 # -*- coding: utf-8 -*-
 #
 # ==============================================================================
@@ -208,6 +208,7 @@ def ScrolledFrame(c, box):
 
     scrolledwindow = gtk.ScrolledWindow()
     scrolledwindow.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+    scrolledwindow.set_shadow_type(gtk.SHADOW_IN)
 
     textview = gtk.TextView()
     textview.set_wrap_mode(gtk.WRAP_WORD)

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python -B
 # -*- coding: utf-8 -*-
 #
 # ==============================================================================
@@ -283,7 +283,7 @@ class Profile():
             )
 
         self.profile_name = TextEntry(
-            c = self, box = self.id_tab, maxlength = 1024, length = 60,
+            c = self, box = self.id_tab, maxlength = 1024, length = 50,
             text = default_profile_name, regex = '^[a-z-]*$'
             )
 
@@ -300,7 +300,7 @@ class Profile():
             )
 
         self.author_name = TextEntry(
-            c = self, box = self.id_tab, maxlength = 1024, length = 60,
+            c = self, box = self.id_tab, maxlength = 1024, length = 50,
             text = default_profile_author, regex = '^[\w\ ]*$'
             )
 
@@ -317,7 +317,7 @@ class Profile():
             )
 
         self.author_email = TextEntry(
-            c = self, box = self.id_tab, maxlength = 1024, length = 60,
+            c = self, box = self.id_tab, maxlength = 1024, length = 50,
             text = default_profile_email, regex = '^[_.@0-9A-Za-z-]*$'
             )
 
@@ -334,7 +334,7 @@ class Profile():
             )
 
         self.author_url = TextEntry(
-            c = self, box = self.id_tab, maxlength = 1024, length = 60,
+            c = self, box = self.id_tab, maxlength = 1024, length = 50,
             text = default_profile_url, regex = '^[-A-Za-z0-9+&@#/%?=~_()|!:,.;]*$'
             )
 
@@ -343,8 +343,8 @@ class Profile():
             )
 
         # DISTRO TAB
-        self.meta_dist_title = Title(
-            c = self, box = self.distro_tab, text = PROFILE_META_DIST_1
+        self.meta_distro_title = Title(
+            c = self, box = self.distro_tab, text = PROFILE_META_DISTRO_1
             )
 
         self.meta_box = CustomBox(
@@ -353,7 +353,7 @@ class Profile():
 
         self.meta_box.set_spacing(5)
 
-        self.meta_dist_box = CustomBox(
+        self.meta_distro_box = CustomBox(
             c = self, box = self.meta_box, align = 'horizontal'
             )
 
@@ -361,16 +361,16 @@ class Profile():
             c = self, box = self.meta_box, align = 'horizontal'
             )
 
-        self.meta_dist_description = Description(
-            c = self, box = self.distro_tab, text = PROFILE_META_DIST_2
+        self.meta_distro_description = Description(
+            c = self, box = self.distro_tab, text = PROFILE_META_DISTRO_2
             )
 
-        self.meta_dist = gtk.combo_box_new_text()
-        self.meta_dist.append_text('canaima')
-        self.meta_dist.set_active(0)
+        self.meta_distro = gtk.combo_box_new_text()
+        self.meta_distro.append_text('canaima')
+        self.meta_distro.set_active(0)
 
         self.codename_list, self.codename_active = CodenameList(
-            c = self, dist = self.meta_dist, db = apt_templates
+            c = self, dist = self.meta_distro, db = apt_templates
             )
 
         self.meta_codename = ActiveCombo(
@@ -387,7 +387,7 @@ class Profile():
             )
 
         self.meta_repo = TextEntry(
-            c = self, box = self.distro_tab, maxlength = 1024, length = 60,
+            c = self, box = self.distro_tab, maxlength = 1024, length = 50,
             text = canaima_repo, regex = '^[-A-Za-z0-9+&@#/%?=~_()|!:,.;]*$'
             )
 
@@ -403,15 +403,15 @@ class Profile():
             c = self, box = self.distro_tab, text = PROFILE_META_REPOSECTIONS_1
             )
 
-        self.section_list = SectionList(c = self, dist = self.meta_dist)
+        self.section_list = SectionList(c = self, dist = self.meta_distro)
 
         self.meta_reposections = CheckList(
             c = self, box = self.distro_tab, checklist = self.section_list,
             checkdefault = 'main'
             )
 
-        self.meta_dist = ActiveCombo(
-            c = self, box = self.meta_dist_box, combolist = cs_distros,
+        self.meta_distro = ActiveCombo(
+            c = self, box = self.meta_distro_box, combolist = cs_distros,
             combodefault = 2, entry = False,
             f_1 = ChangeCodename,
             p_1 = (self, self.meta_codename, apt_templates),
@@ -470,7 +470,7 @@ class Profile():
 
         self.img_syslinux_splash = TextEntry(
             c = self, box = self.img_syslinux_splash_box, maxlength = 1024,
-            length = 68, text = PROFILE_IMG_SYSLINUX_SPLASH_ENTRY, regex = '^.*$'
+            length = 50, text = PROFILE_IMG_SYSLINUX_SPLASH_ENTRY, regex = '^.*$'
             )
 
         self.img_syslinux_splash_choose = ActiveButton(
@@ -527,7 +527,7 @@ class Profile():
 
         self.os_extrarepos_url = TextEntry(
             c = self, box = self.os_extrarepos_box_3,
-            maxlength = 1024, length = 38, text = PROFILE_OS_EXTRAREPOS_URL,
+            maxlength = 1024, length = 26, text = PROFILE_OS_EXTRAREPOS_URL,
             regex = '^[-A-Za-z0-9+&@#/%?=~_()|!:,.;]*$'
             )
 
@@ -539,7 +539,7 @@ class Profile():
 
         self.os_extrarepos_sections = TextEntry(
             c = self, box = self.os_extrarepos_box_3,
-            maxlength = 1024, length = 17, text = PROFILE_OS_EXTRAREPOS_SECTIONS,
+            maxlength = 1024, length = 10, text = PROFILE_OS_EXTRAREPOS_SECTIONS,
             regex = '^[A-Za-z0-9\ -]*$'
             )
 
@@ -586,7 +586,7 @@ class Profile():
 
         self.os_packages_name = TextEntry(
             c = self, box = self.os_packages_box_2,
-            maxlength = 1024, length = 68, text = PROFILE_OS_PACKAGES_ENTRY,
+            maxlength = 1024, length = 50, text = PROFILE_OS_PACKAGES_ENTRY,
             regex = '^[A-Za-z0-9\ -]*$'
             )
 
@@ -638,7 +638,7 @@ class Profile():
 
         self.img_pool_packages_name = TextEntry(
             c = self, box = self.img_pool_packages_box_2,
-            maxlength = 1024, length = 68,
+            maxlength = 1024, length = 50,
             text = PROFILE_IMG_POOL_PACKAGES_ENTRY, regex = '^[A-Za-z0-9\ -]*$'
             )
 
@@ -678,7 +678,7 @@ class Profile():
             )
 
         self.os_includes = TextEntry(
-            c = self, box = self.os_includes_box, maxlength = 1024, length = 68,
+            c = self, box = self.os_includes_box, maxlength = 1024, length = 50,
             text = PROFILE_OS_INCLUDES_ENTRY, regex = '^.*$'
             )
 
@@ -722,7 +722,7 @@ class Profile():
             )
 
         self.img_includes = TextEntry(
-            c = self, box = self.img_includes_box, maxlength = 1024, length = 68,
+            c = self, box = self.img_includes_box, maxlength = 1024, length = 50,
             text = PROFILE_IMG_INCLUDES_ENTRY, regex = '^.*$'
             )
 
@@ -766,7 +766,7 @@ class Profile():
             )
 
         self.os_hooks = TextEntry(
-            c = self, box = self.os_hooks_box, maxlength = 1024, length = 68,
+            c = self, box = self.os_hooks_box, maxlength = 1024, length = 50,
             text = PROFILE_OS_HOOKS_ENTRY, regex = '^.*$'
             )
 
@@ -810,7 +810,7 @@ class Profile():
             )
 
         self.img_hooks = TextEntry(
-            c = self, box = self.img_hooks_box, maxlength = 1024, length = 68,
+            c = self, box = self.img_hooks_box, maxlength = 1024, length = 50,
             text = PROFILE_IMG_HOOKS_ENTRY, regex = '^.*$'
             )
 
@@ -867,7 +867,7 @@ class Profile():
 
         self.img_debian_installer_banner = TextEntry(
             c = self, box = self.img_debian_installer_banner_box,
-            maxlength = 1024, length = 68,
+            maxlength = 1024, length = 50,
             text = PROFILE_IMG_DEBIAN_INSTALLER_BANNER_ENTRY, regex = '^.*$'
             )
 
@@ -907,7 +907,7 @@ class Profile():
 
         self.img_debian_installer_preseed = TextEntry(
             c = self, box = self.img_debian_installer_preseed_box,
-            maxlength = 1024, length = 68,
+            maxlength = 1024, length = 50,
             text = PROFILE_IMG_DEBIAN_INSTALLER_PRESEED_ENTRY, regex = '^.*$'
             )
 
@@ -943,7 +943,7 @@ class Profile():
 
         self.img_debian_installer_gtk = TextEntry(
             c = self, box = self.img_debian_installer_gtk_box,
-            maxlength = 1024, length = 68,
+            maxlength = 1024, length = 50,
             text = PROFILE_IMG_DEBIAN_INSTALLER_GTK_ENTRY, regex = '^.*$'
             )
 
@@ -1026,7 +1026,7 @@ class Profile():
                     'f_1': CreateProfile, 'p_1': (
                         self, self.profile_name, self.profile_arch,
                         self.author_name, self.author_email, self.author_url,
-                        self.os_locale, self.meta_dist, self.meta_codename,
+                        self.os_locale, self.meta_distro, self.meta_codename,
                         self.meta_repo, self.meta_reposections, self.os_extrarepos,
                         self.os_packages, self.img_pool_packages, self.os_includes,
                         self.img_includes, self.os_hooks, self.img_hooks,
@@ -1081,7 +1081,7 @@ class Test():
             )
 
         self.test_image = TextEntry(
-            c = self, box = self.test_image_box, maxlength = 1024, length = 68,
+            c = self, box = self.test_image_box, maxlength = 1024, length = 50,
             text = TEST_IMAGE_ENTRY, regex = '^.*$'
             )
 
@@ -1292,7 +1292,7 @@ class Save():
             )
 
         self.save_image = TextEntry(
-            c = self, box = self.save_image_box, maxlength = 1024, length = 68,
+            c = self, box = self.save_image_box, maxlength = 1024, length = 50,
             text = SAVE_IMAGE_ENTRY, regex = '^.*$'
             )
 
